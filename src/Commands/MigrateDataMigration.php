@@ -10,6 +10,8 @@ class MigrateDataMigration extends Command
     protected $signature = 'data-migration:migrate
                             {path : The path to the migration file.}';
 
+    protected $description = 'Migrate a single Data Migration by path';
+
     public function handle()
     {
         $path = $this->argument('path');

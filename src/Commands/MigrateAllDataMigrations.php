@@ -9,6 +9,8 @@ class MigrateAllDataMigrations extends Command
 {
     protected $signature = 'data-migration:all 
                             {--exclusive : Run the exclusive migrations}';
+    
+    protected $description = 'Migrate All Data Migrations as configured in data-migrations.php config file';
 
     public function handle(): int
     {
