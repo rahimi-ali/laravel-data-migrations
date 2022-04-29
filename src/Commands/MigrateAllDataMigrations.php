@@ -7,7 +7,7 @@ use AliRahimiCoder\LaravelDataMigrations\DataMigration;
 
 class MigrateAllDataMigrations extends Command
 {
-    protected $signature = 'data-migrations:all 
+    protected $signature = 'data-migration:all 
                             {--exclusive : Run the exclusive migrations}';
 
     public function handle(): int
