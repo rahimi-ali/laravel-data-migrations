@@ -1,5 +1,6 @@
 {
   "name": "ali-rahimi-coder/laravel-data-migrations",
+  "version": "1.0.0",
   "description": "Data Migrations For Laravel",
   "keywords": [
     "laravel",
