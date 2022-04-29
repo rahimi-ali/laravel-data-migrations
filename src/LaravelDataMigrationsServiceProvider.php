@@ -11,7 +11,7 @@ class LaravelDataMigrationsServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/data-migrations.php' => config_path('data-migrations.php'),
-        ]);
+        ], 'data-migrations-paths');
     }
 
     public function register(): void
