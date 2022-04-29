@@ -38,6 +38,7 @@ class MigrateAllDataMigrations extends Command
                 $migration = new $class;
                 if ($migration->isExclusive() === $this->option('exclusive')) {
                     $migration->run();
+                    $migrationsRun++;
                 }
             }
         }
