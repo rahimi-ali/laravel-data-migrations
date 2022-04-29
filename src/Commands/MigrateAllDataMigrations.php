@@ -32,7 +32,7 @@ class MigrateAllDataMigrations extends Command
 
         $migrationsRun = 0;
         foreach ($paths as $path) {
-            $class = require $path;
+            $class = require base_path() . $path;
             if ($class instanceof DataMigration) {
                 /** @var DataMigration $migration */
                 $migration = new $class;
