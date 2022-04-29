@@ -29,7 +29,7 @@ abstract class DataMigration
     {
         $existingIndices = $this->findExistingIndices();
 
-        $newData =  $this->getNewData($existingIndices);
+        $newData = $this->getNewData($existingIndices);
 
         $this->insert($newData);
 
@@ -55,7 +55,7 @@ abstract class DataMigration
 
     protected function getNewData(array $existingIndices): array
     {
-        $data = $this->data();
+        $data = $this->getKeyedData();
 
         $newData = [];
         foreach ($data as $index => $datum) {
@@ -85,21 +85,32 @@ abstract class DataMigration
         return $query->delete();
     }
 
-    protected function getKeyedUniqueData(): array
+    protected function getKeyedData(): array
     {
         $columns = $this->columns();
-        $uniqueColumns = $this->uniqueColumns();
         $data = $this->data();
 
-        $keyedUniqueData = [];
+        $keyedData = [];
         foreach ($data as $datum) {
-            $keyedDatum = array_combine($columns, $datum);
-            foreach ($keyedDatum as $key => $v) {
+            $keyedData[] = array_combine($columns, $datum);
+        }
+
+        return $keyedData;
+    }
+
+    protected function getKeyedUniqueData(): array
+    {
+        $uniqueColumns = $this->uniqueColumns();
+        $keyedData = $this->getKeyedData();
+
+        $keyedUniqueData = [];
+        foreach ($keyedData as $datum) {
+            foreach ($datum as $key => $v) {
                 if (!in_array($key, $uniqueColumns)) {
-                    unset($keyedDatum[$key]);
+                    unset($datum[$key]);
                 }
             }
-            $keyedUniqueData[] = $keyedDatum;
+            $keyedUniqueData[] = $datum;
         }
 
         return $keyedUniqueData;
