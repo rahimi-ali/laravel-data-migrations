@@ -1,0 +1,34 @@
+<?php
+
+use AliRahimiCoder\LaravelDataMigrations\DataMigration;
+
+return new class () extends DataMigration {
+
+    protected string $table = '$TABLE$';
+
+    protected bool $exclusive = $EXCLUSIVE$;
+
+    /**
+     * @return array<int, string>
+     */
+    public function columns(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    public function uniqueColumns(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array<int, array<int, mixed>>
+     */
+    public function data(): array
+    {
+        return [];
+    }
+};
